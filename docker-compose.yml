@@ -1,0 +1,34 @@
+version: "2"
+
+services:
+  client:
+    build: ./client
+    container_name: client
+    ports:
+      - 4200:80
+    links:
+      - myapp
+
+  mariadb:
+    image: "docker.io/bitnami/mariadb:10.1-debian-10"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=goreact
+      - MARIADB_DATABASE=goreact
+      - MARIADB_PASSWORD=root
+
+  myapp:
+    tty: true
+    image: docker.io/bitnami/laravel:7-debian-10
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=goreact
+      - DB_DATABASE=goreact
+      - DB_PASSWORD=root
+    depends_on:
+      - mariadb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./server:/app
+    # privileged: true # Privileged mode could be required to run this container under Windows

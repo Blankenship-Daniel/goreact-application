@@ -1,0 +1,29 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="media-container">
+    <mat-card class="media" *ngFor="let url of urls">
+      <mat-card-header>
+        <mat-card-title>{{ url }}</mat-card-title>
+        <mat-card-subtitle
+          >Click on the media to open in a new tab</mat-card-subtitle
+        >
+      </mat-card-header>
+      <div class="preview">
+        <a target="_blank" [href]="url">
+          <app-media-view [url]="url"></app-media-view>
+        </a>
+      </div>
+    </mat-card>
+  </div>
+  <div class="media-btn">
+    <button mat-raised-button color="accent" (click)="fileInput.click()">
+      Upload Media
+    </button>
+    <input
+      #fileInput
+      type="file"
+      (change)="onFileInput($event)"
+      style="display: none;"
+    />
+  </div>
+</div>

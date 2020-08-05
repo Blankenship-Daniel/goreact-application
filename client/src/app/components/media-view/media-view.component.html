@@ -1,0 +1,28 @@
+<div [ngSwitch]="fileType">
+  <img
+    id="jpg"
+    class="media"
+    *ngSwitchCase="'jpg'"
+    [src]="url"
+    alt="Media URLs"
+  />
+  <img
+    id="png"
+    class="media"
+    *ngSwitchCase="'png'"
+    [src]="url"
+    alt="Media URLs"
+  />
+  <img
+    id="jpeg"
+    class="media"
+    *ngSwitchCase="'jpeg'"
+    [src]="url"
+    alt="Media URLs"
+  />
+  <video id="mp4" class="media" *ngSwitchCase="'mp4'" [src]="url"></video>
+  <div id="pdf" *ngSwitchCase="'pdf'">{{ url }}</div>
+  <div id="default" *ngSwitchDefault>
+    Sorry! Can't display this file type: {{ fileType }}
+  </div>
+</div>

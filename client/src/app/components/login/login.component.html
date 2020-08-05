@@ -1,0 +1,51 @@
+<app-nav-bar></app-nav-bar>
+<mat-card>
+  <form [formGroup]="form" (submit)="login()">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>
+      Fill the following form and click on the
+      <strong>Login</strong> button to access the home page
+    </mat-card-subtitle>
+    <div *ngIf="errors">
+      <div>
+        <div><strong>Oops!</strong> You have entered invalid credentials</div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label for="email">Email address</mat-label>
+          <input matInput type="email" id="email" formControlName="email" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label for="password">Password</mat-label>
+          <input
+            matInput
+            type="password"
+            id="password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loading || !form.valid"
+        >
+          Login
+        </button>
+        <div class="register-link">
+          <a routerLink="/register" routerLinkActive="active"
+            >Not a user? Register here.</a
+          >
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-card>

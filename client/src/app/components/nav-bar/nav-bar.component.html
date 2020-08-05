@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span>File Manager</span>
+
+  <button
+    (click)="logout()"
+    *ngIf="accessToken"
+    mat-raised-button
+    color="secondary"
+    [disabled]="loading"
+  >
+    Logout
+  </button>
+</mat-toolbar>
