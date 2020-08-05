@@ -41,4 +41,3 @@ I'm going to go ahead and make the assumption that you have `npm` and `node` ins
 From the root of the repo run the following command: `docker-compose exec myapp php artisan test`
 
 This runs the tests directly on laravel docker container. This way you don't have to worry about having `artisan` or the right version of `php` etc.
-# goreact-application
